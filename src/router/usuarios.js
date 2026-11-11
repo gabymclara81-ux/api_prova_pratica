@@ -12,8 +12,8 @@ usuarioRouter.post("/inserirUsuario", async (req, res) => {
         const hashedPassword = await bcrypt.hash(senha, 10);
 
         conn.query(
-            `INSERT INTO usuario (id, nome, email, senha) VALUES (?, ?, ?, ?)`,
-            [null, nome, email, hashedPassword],
+            `INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)`,
+            [nome, email, hashedPassword],
             (err, result) => {
                 if (err) {
                     console.log("erro ao inserir usuario");
