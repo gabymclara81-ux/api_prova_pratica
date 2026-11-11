@@ -6,14 +6,14 @@ import { conn } from '../database/configbd.js';
 const usuarioRouter = Router();
 
 usuarioRouter.post("/inserirUsuario", async (req, res) => {
-    const { id, nome, email, senha } = req.body;
+    const {nome, email, senha } = req.body;
 
     try {
         const hashedPassword = await bcrypt.hash(senha, 10);
 
         conn.query(
             `INSERT INTO usuario (id, nome, email, senha) VALUES (?, ?, ?, ?)`,
-            [id, nome, email, hashedPassword],
+            [null, nome, email, hashedPassword],
             (err, result) => {
                 if (err) {
                     console.log("erro ao inserir usuario");
