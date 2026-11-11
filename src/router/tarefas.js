@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {conn} from `../database/configbd.js`;
+import {conn} from "../database/configbd.js";
 const tarefasRouter = Router();
 
 tarefasRouter.post("/inserirTarefa", (req, res)=>{

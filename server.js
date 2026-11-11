@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import { usuarioRouter } from './src/router/usuarios.js';
 import { tarefasRouter } from './src/router/tarefas.js';
