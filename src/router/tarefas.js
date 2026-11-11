@@ -3,8 +3,8 @@ import {conn} from "../database/configbd.js";
 const tarefasRouter = Router();
 
 tarefasRouter.post("/inserirTarefa", (req, res)=>{
-    const {id, nome, data_inicio, data_termino, descricao, grau_prioridade} = req.body;
-    conn.query(`INSERT INTO tarefa (id, nome, data_inicio, data_termino, descricao, grau_prioridade) VALUES ('${id}', '${nome}', '${data_inicio}', '${data_termino}', '${descricao}', '${grau_prioridade}')`,
+    const {nome, data_inicio, data_termino, descricao, grau_prioridade} = req.body;
+    conn.query(`INSERT INTO tarefa (id, nome, data_inicio, data_termino, descricao, grau_prioridade) VALUES (NULL, '${nome}', '${data_inicio}', '${data_termino}', '${descricao}', '${grau_prioridade}')`,
         (err, result) =>{
         if(err){
             console.log("erro ao inserir tarefa")
