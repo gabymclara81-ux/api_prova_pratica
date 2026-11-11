@@ -15,4 +15,4 @@ conn.connect((err) => {
         console.log("Conectado ao bd...")
 })
 
-export {conn}
+module.exports = conn;

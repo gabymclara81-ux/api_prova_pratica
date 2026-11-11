@@ -16,9 +16,12 @@ usuarioRouter.post("/inserirUsuario", async (req, res) => {
             [nome, email, hashedPassword],
             (err, result) => {
                 if (err) {
-                    console.log("erro ao inserir usuario");
-                    return res.status(500).json({ mensagem: "Erro ao inserir usuário" });
-                }
+                    console.error("Erro ao inserir usuário:", err);
+                    return res.status(500).json({
+                        mensagem: "Erro ao inserir usuário",
+                        erro: err.message
+    });
+}
 
                 res.json({ result });
             }
