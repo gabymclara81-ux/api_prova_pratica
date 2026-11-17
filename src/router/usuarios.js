@@ -3,6 +3,7 @@ import { Router } from 'express';
 import bcrypt from 'bcrypt';
 import { conn } from '../database/configbd.js';
 
+
 const usuarioRouter = Router();
 
 usuarioRouter.post("/inserirUsuario", async (req, res) => {
@@ -12,7 +13,7 @@ usuarioRouter.post("/inserirUsuario", async (req, res) => {
         const hashedPassword = await bcrypt.hash(senha, 10);
 
         conn.query(
-            `INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)`,
+            `INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)`,
             [nome, email, hashedPassword],
             (err, result) => {
                 if (err) {
@@ -35,7 +36,7 @@ usuarioRouter.post("/inserirUsuario", async (req, res) => {
 
 usuarioRouter.get("/listarUsuarios", (req, res) => {
     conn.query(
-        `SELECT id, nome, email FROM usuario`,
+        `SELECT id, nome, email FROM usuarios`,
         (err, result) => {
             if (err) {
                 console.log("erro ao listar usuarios");
@@ -55,7 +56,7 @@ usuarioRouter.put("/atualizarUsuario", async (req, res) => {
         const hashedPassword = await bcrypt.hash(senha, 10);
 
         conn.query(
-            `UPDATE usuario SET nome=?, email=?, senha=? WHERE id=?`,
+            `UPDATE usuarios SET nome=?, email=?, senha=? WHERE id=?`,
             [nome, email, hashedPassword, id],
             (err, result) => {
                 if (err) {
@@ -77,7 +78,7 @@ usuarioRouter.delete("/deletarUsuario", (req, res) => {
     const { id } = req.body;
 
     conn.query(
-        `DELETE FROM usuario WHERE id=?`,
+        `DELETE FROM usuarios WHERE id=?`,
         [id],
         (err, result) => {
             if (err) {

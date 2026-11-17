@@ -1,4 +1,5 @@
 import mysql from "mysql2"
+import "dotenv/config"
 
 const conn = mysql.createConnection({
     host: process.env.host,
@@ -15,4 +16,4 @@ conn.connect((err) => {
         console.log("Conectado ao bd...")
 })
 
-module.exports = conn;
+export { conn };

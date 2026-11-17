@@ -2,11 +2,13 @@ import 'dotenv/config';
 import express from 'express';
 import { usuarioRouter } from './src/router/usuarios.js';
 import { tarefasRouter } from './src/router/tarefas.js';
+import { loginRouter } from './src/router/login.js';
 
 const app = express();
 app.use(express.json());
 app.use(usuarioRouter);
 app.use(tarefasRouter);
+app.use(loginRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
